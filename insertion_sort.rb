@@ -12,4 +12,6 @@ def insertion_sort(numbers)
   numbers
 end
 
-p insertion_sort([2, 5, 1, 8, 7, 3])
+if __FILE__ == $0
+  p insertion_sort([2, 5, 1, 8, 7, 3])
+end
