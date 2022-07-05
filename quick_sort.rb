@@ -1,28 +1,31 @@
-def partition(numbers, low, high)
-  i = low - 1
-  pivot = numbers[high]
-  (low...high).each do |j|
+def partition(numbers, left, right)
+  pivot = numbers[right]
+  i = left - 1
+
+  (left...right).each do |j|
     if numbers[j] <= pivot
       i += 1
       numbers[i], numbers[j] = numbers[j], numbers[i]
     end
   end
-  numbers[i + 1], numbers[high] = numbers[high], numbers[i + 1]
-  i + 1
+
+  partition_index = i + 1
+  numbers[partition_index], numbers[right] = numbers[right], numbers[partition_index]
+  partition_index
 end
 
-def _quick_sort(numbers, low, high)
-  if low < high
-    partition_index = partition(numbers, low, high)
-    _quick_sort(numbers, low, partition_index - 1)
-    _quick_sort(numbers, partition_index + 1, high)
+def inner_quick_sort(numbers, left, right)
+  if left < right
+    partition_index = partition(numbers, left, right)
+    inner_quick_sort(numbers, left, partition_index - 1)
+    inner_quick_sort(numbers, partition_index + 1, right)
   end
 end
 
 def quick_sort(numbers)
-  _quick_sort(numbers, 0, numbers.size - 1)
+  inner_quick_sort(numbers, 0, numbers.size - 1)
   numbers
 end
 
-p quick_sort([1,8,3,9,4,5,7])
+p quick_sort([1, 8, 3, 9, 4, 5, 7])
 p quick_sort(Array.new(10){ Random.rand(1..1000) })
