@@ -27,5 +27,7 @@ def quick_sort(numbers)
   numbers
 end
 
-p quick_sort([1, 8, 3, 9, 4, 5, 7])
-p quick_sort(Array.new(10){ Random.rand(1..1000) })
+if __FILE__ == $0
+  p quick_sort([1, 8, 3, 9, 4, 5, 7])
+  p quick_sort(Array.new(10){ Random.rand(1..1000) })
+end

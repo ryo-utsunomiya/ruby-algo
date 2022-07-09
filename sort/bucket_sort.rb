@@ -1,4 +1,4 @@
-require_relative './insertion_sort'
+require_relative './sertion_sort'
 
 def bucket_sort(numbers)
   bucket_size = numbers.max / numbers.size
